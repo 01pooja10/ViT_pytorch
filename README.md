@@ -2,7 +2,7 @@
 Coding a vision transformer from scratch using python's pytorch framework.
 The Vision Transformer Architecture:
 
-[img](dependencies/vit.jpg)
+![img](dependencies/vit.jpg)
 
 Let's break down the subparts of the transformer...
 
