@@ -1,3 +1,6 @@
+import torch
+import torch.nn as nn
+
 class Attention(nn.module):
 
     def __init__(self, dim, nheads=12, kqv=True, projp, attnp):
@@ -15,7 +18,7 @@ class Attention(nn.module):
         self.dropa = nn.Dropout(p=attnp)
         self.proj = nn.Linear(dim,dim)
         self.dropp = nn.Dropout(p=projp)
-        self.sm = nn.Softmax()
+        self.sm = nn.Softmax(dim=-1)
 
     def forward(self, x):
         bs, tokens, dim = x.shape
@@ -27,7 +30,7 @@ class Attention(nn.module):
         q, k, v = kqv[0], kqv[1], kqv[2]
         dp = (q @ k.transpose(-2, -1)) * self.scaler
 		
-        attn = self.sm(dp,dim=-1)
+        attn = self.sm(dp)
         attn = self.dropa(attn)
         wt = attn @ v
         wt = wt.transpose(2,1)     #(batch, patches+1, heads, head_dim)
