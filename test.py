@@ -6,9 +6,9 @@ import warnings
 warnings.filter_warnings('ignore')
 
 def test():
+	#send model and inputs to GPU
     mod = ViT().cuda()
-	mod = mod.eval()
-    inp = torch.randn((2, 3, 384, 384)).cuda()  #send model and inputs to GPU
+    inp = torch.randn((2, 3, 384, 384)).cuda()
     out = mod(inp)
     print(out.shape)
     print(out.mean())
