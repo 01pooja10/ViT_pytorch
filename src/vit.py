@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 from src.embedding import Embed
-from src.attn import Attention
 from src.blocks import Blocks
 
 
