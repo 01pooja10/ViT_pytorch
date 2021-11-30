@@ -1,3 +1,9 @@
+import torch
+import torch.nn as nn
+from src.mlp import MLP
+from src.attn import Attention
+
+
 class Blocks(nn.module):
     '''Reusable transformer blocks'''
 
